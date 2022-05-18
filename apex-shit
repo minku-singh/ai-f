@@ -1,0 +1,35 @@
+1 . Create a visualforce page.
+
+<apex:page controller="LearnOddOrEvenNumber" sidebar="false">
+    <apex:form >
+        <apex:pageBlock title="Find Odd/Even Number">
+         <apex:pageMessages/>
+           <apex:pageBlockButtons location="bottom">
+               <apex:commandButton value="Submit" action="{!FindOddOrEvenNumber}"/>
+           </apex:pageBlockButtons>
+            <apex:pageBlockSection >
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel value="Enter Number:" for="thr"/>
+                    <apex:inputText value="{!Mynumber}" id="thr"/>                  
+                </apex:pageBlockSectionItem>
+                <apex:outputLabel value="Result : ">
+                {!Result}
+                </apex:outputLabel>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+</apex:page>
+
+2. Create a Apex class.
+
+public class LearnOddOrEvenNumber{
+    public integer Mynumber{get;set;}
+    public string Result{get;set;}
+    public pageReference FindOddOrEvenNumber(){
+        if(math.mod(Mynumber,2) == 0){
+            Result = 'This is Even number.';
+        }else{
+            Result = 'This is Odd number.';
+        }
+        return null;
+    }
+}
